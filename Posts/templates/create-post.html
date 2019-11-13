@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Add post{% endblock %}
+
+{% block content %}
+    <h2>Add post</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {% comment %}{{ form.as_p }}{% endcomment %}
+
+        <label for="id_title">Title:</label>
+        <input id="id_title" type="text" name="title"><br><br>
+        {% if form.title.errors %}{{ form.title.errors }}{% endif %}
+
+        <label for="id_text">Text:</label>
+        <input id="text" type="text" name="text"><br><br>
+        {% if form.text.errors %}{{ form.text.errors }}{% endif %}
+
+        <label for="id_author">Author:</label>
+        <select name="author" id="id_author">
+            {% for id, name in form.author.field.choices %}
+                <option value="{{ id }}">{{ name }}</option>
+            {% endfor %}
+        </select>
+        {% if form.author.errors %}{{ form.author.errors }}{% endif %}
+
+        <br/>
+        <br/>
+
+        <label for="id_type">Type:</label>
+        <select name="type" id="id_type">
+            {% for id, name in form.type.field.choices %}
+                <option value="{{ id }}">{{ name }}</option>
+            {% endfor %}
+        </select>
+        {% if form.type.errors %}{{ form.type.errors }}{% endif %}
+        <br/>
+        <br/>
+
+        <label for="id_date_created">Date created:</label>
+        <input id="id_date_created" type="text" name="date_created" value="{% now "Y-m-d H:i:s" %}"><br><br>
+        {% if form.date_created.errors %}{{ form.date_created.errors }}{% endif %}
+
+        <button type="submit">Add post</button>
+    </form>
+{% endblock %}

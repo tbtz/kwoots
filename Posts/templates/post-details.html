@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Post detail{% endblock %}
+
+{% block content %}
+    <h2>Post detail</h2>
+
+    <table>
+        <tr>
+            <td><b>Title:</b></td>
+            <td>{{ post.title }}<br></td>
+        </tr>
+        <tr>
+            <td><b>Text</b></td>
+            <td>{{ post.text }}<br></td>
+        </tr>
+        <tr>
+            <td><b>Author:</b></td>
+            <td>{{ post.author }}<br></td>
+        </tr>
+        <tr>
+            <td><b>Type:</b></td>
+            <td>{{ post.get_type_display }}<br></td>
+        </tr>
+        <tr>
+            <td><b>Date published:</b></td>
+            <td>{{ post.date_created }}<br></td>
+        </tr>
+    </table>
+
+    <br>
+    <a href="{% url 'post_list' %}">Back to all posts</a>
+
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit">Delete post</button>
+    </form>
+
+{% endblock %}

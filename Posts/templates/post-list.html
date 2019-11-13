@@ -5,12 +5,12 @@
 {% block content %}
     <h2>Posts list</h2>
     <ul>
-        {% for post in all_the_posts %}
-            <b><a href="{{ post.id }}/">[{{ post.get_type_display }}] {{ post.title }}</b></a><br>
+        {% for post in posts %}
+            <b><a href="{{ post.id }}">[{{ post.get_type_display }}] {{ post.title }}</b></a><br>
             Created by <b>{{ post.author }}</b> at <b>{{ post.date_created }}</b><br>
             <br>
         {% endfor %}
     </ul>
 
-    <a href="{% url 'post_create' %}">Add a new post</a>
+    <a href="{% url 'create_post' %}">Add a new post</a>
 {% endblock %}
