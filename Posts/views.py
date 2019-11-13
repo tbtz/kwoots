@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DetailView, ListView
 from .forms import PostForm
@@ -49,10 +50,15 @@ def create_post(request):
     if request.method == 'POST':
         form = PostForm(request.POST)
         form.instance.user = request.user
+        author_id = form.data['author']
+        author = User.objects.filter(id=author_id).first()
+
         if form.is_valid():
-            print(form)
-            form.save()
-            return redirect('post_list')
+            if Post.author_is_spammer(author.username):
+                return render(request, 'create-post.html', {'form': form, 'is_spammer': True})
+            else:
+                form.save()
+                return redirect('post_list')
         else:
             print(form.errors)
             return render(request, 'create-post.html', {'form': form})

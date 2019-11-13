@@ -1,0 +1,26 @@
+Creating test database for alias 'default'...
+System check identified no issues (0 silenced).
+### Expect to be no spammer
+
+Created new post at: 1573678008.4593 (2019-11-13 20:46:48.459300+00:00)
+Created new post at: 1573678028.459635 (2019-11-13 20:47:08.459635+00:00)
+Created new post at: 1573678048.459879 (2019-11-13 20:47:28.459879+00:00)
+Created new post at: 1573678068.460099 (2019-11-13 20:47:48.460099+00:00)
+
+Now it is: 1573678208.462862 (2019-11-13 20:50:08.462869+00:00)
+
+.### Expect to be a spammer
+
+Created new post at: 1573678118.463646 (2019-11-13 20:48:38.463646+00:00)
+Created new post at: 1573678128.463944 (2019-11-13 20:48:48.463944+00:00)
+Created new post at: 1573678198.464195 (2019-11-13 20:49:58.464195+00:00)
+Created new post at: 1573678203.46444 (2019-11-13 20:50:03.464440+00:00)
+
+Now it is: 1573678208.466343 (2019-11-13 20:50:08.466349+00:00)
+
+.
+----------------------------------------------------------------------
+Ran 2 tests in 0.008s
+
+OK
+Destroying test database for alias 'default'...

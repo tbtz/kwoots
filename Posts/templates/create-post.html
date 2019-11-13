@@ -41,6 +41,9 @@
         <input id="id_date_created" type="text" name="date_created" value="{% now "Y-m-d H:i:s" %}"><br><br>
         {% if form.date_created.errors %}{{ form.date_created.errors }}{% endif %}
 
+        {% if is_spammer %}
+            <p><b>Error:</b> You are a spammer.</p>
+        {% endif %}
         <button type="submit">Add post</button>
     </form>
 {% endblock %}
